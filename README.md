@@ -4,7 +4,7 @@
 NASA Space Apps Challenge 2026 · Kuala Lumpur · Team Solo Orbit KL
 Challenge: *Harmonization of MODIS and VIIRS Hot Spots*
 
-**Live app:** [add the Streamlit link here] · **Code licence:** MIT (see `LICENSE`)
+**Live app:** https://hazetrace.streamlit.app · **Code:** https://github.com/maksudaakhtertumpa/hazetrace · **Licence:** MIT (see `LICENSE`)
 
 ![HazeTrace overview: why harmonize, validation scores and the summary for October 2026](docs/screenshots/01_top.jpg)
 

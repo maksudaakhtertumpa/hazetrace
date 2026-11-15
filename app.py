@@ -33,7 +33,7 @@ WHOLE = "Whole study area"
 st.markdown(f"""
 <style>
 #MainMenu, footer {{visibility: hidden;}}
-.block-container {{padding-top: 1.4rem; max-width: 1320px;}}
+.block-container {{padding-top: 3.4rem; max-width: 1320px;}}
 .ht-head {{display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; margin-bottom:.4rem;}}
 .ht-title {{font-size:2.15rem; font-weight:800; letter-spacing:-.5px; color:{INK}; line-height:1.05;}}
 .ht-title span {{color:{FIRE};}}
