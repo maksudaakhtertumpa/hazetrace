@@ -1,0 +1,8 @@
+# Raw FIRMS downloads and source files are large; get them from NASA FIRMS (see README)
+data/raw/
+data/external/
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/

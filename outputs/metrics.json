@@ -1,0 +1,63 @@
+{
+  "validation": "leave-one-year-out, region x month",
+  "regions": "provinces",
+  "check_malaysia_2026": {
+    "area": "Malaysia (443 grid cells)",
+    "months": "2026-01 to 2026-10",
+    "modis_observed": 1708,
+    "harmonized": 1334.0,
+    "viirs_raw": 7192,
+    "monthly_MAE": 47.9,
+    "total_error_pct": -21.9
+  },
+  "method_used": "LightGBM ratio model",
+  "years": [
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "overall": {
+    "group": "All regions",
+    "kind": "region",
+    "model_MAE": 60.94,
+    "model_R2": 0.967,
+    "model_bias_pct": 0.8,
+    "model_n": 1092,
+    "base_MAE": 73.27,
+    "base_R2": 0.914,
+    "base_bias_pct": 3.7
+  },
+  "noaa20_transfer": {
+    "model": {
+      "MAE": 35.17,
+      "R2": 0.99,
+      "bias_pct": -5.7,
+      "n": 651
+    },
+    "baseline": {
+      "MAE": 43.19,
+      "R2": 0.982,
+      "bias_pct": -5.0,
+      "n": 651
+    }
+  },
+  "first_month": "2003-01",
+  "last_month": "2026-11",
+  "nrt_months": [
+    "2026-08",
+    "2026-09",
+    "2026-10",
+    "2026-11"
+  ],
+  "band_note": "10-90% band summed over cells: approximate, not an exact interval for the region total"
+}

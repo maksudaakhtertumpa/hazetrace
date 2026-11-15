@@ -1,0 +1,10 @@
+group,kind,model_MAE,model_R2,model_bias_pct,model_n,base_MAE,base_R2,base_bias_pct
+All regions,region,60.94,0.967,0.8,1092,73.27,0.914,3.7
+Central Kalimantan,region,57.64,0.989,1.6,156,93.6,0.951,2.9
+Jambi,region,26.63,0.957,1.2,156,25.09,0.971,6.2
+Other,region,76.82,0.987,-3.8,156,72.47,0.99,0.7
+Riau,region,79.82,0.974,-2.0,156,99.69,0.931,2.7
+Sarawak (Malaysia),region,15.59,0.953,-10.7,156,14.72,0.949,3.1
+South Sumatra,region,87.61,0.866,14.8,156,129.83,0.64,14.1
+West Kalimantan,region,82.45,0.965,0.9,156,77.48,0.969,1.6
+unknown,landcover,291.19,0.986,0.8,156,377.96,0.948,3.7
