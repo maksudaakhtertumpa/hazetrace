@@ -246,7 +246,7 @@ sel = area_cells(region, box)
 if sel.empty:
     st.info("No fire detections in this area since 2003. Try a larger box or a named region.")
     st.stop()
-series = I.monthly_series(sel)
+series = I.monthly_series(sel, last=cells.ym.max())   # every area runs to the end of the data
 stats = I.month_stats(series, latest)
 seas = I.season_table(series)
 season_rank = int(seas.loc[yr_latest, "rank"]) if yr_latest in seas.index else None
@@ -257,7 +257,7 @@ def region_rows(ym):
     """Region table with share of ALL hotspots in the study area (including Other)."""
     rt = I.region_table(cells, ym)
     if int(ym[5:7]) in I.SEASON:   # same rule as the summary card: a top-3 haze season counts
-        rt["Level"] = [I.level_for(I.month_stats(I.monthly_series(cells[cells.region == r]), ym),
+        rt["Level"] = [I.level_for(I.month_stats(I.monthly_series(cells[cells.region == r], last=cells.ym.max()), ym),
                                    int(sr) if pd.notna(sr) else None)
                        for r, sr in zip(rt.Region, rt["Season rank"])]
     total = cells.loc[cells.ym == ym, "value"].sum()
@@ -337,7 +337,9 @@ if stats:
     mname = FULL_MONTHS[mo_latest - 1]
     ratio_txt = f", {stats['ratio']:.1f}× a typical {mname}" if stats["ratio"] else ""
     seas_txt = (f" Fire hotspots in the {yr_latest} haze season (Aug to Oct) rank <b>{season_rank} of {len(seas)}"
-                f"</b> since {years[0]}." if season_rank else "")
+                f"</b> since {years[0]}." if season_rank and seas.loc[yr_latest, "value"] > 0 else "")
+    rank_txt = (f"Rank <b>{stats['rank']} of {stats['n']}</b> {mname}s since {years[0]}, where 1 is the most fires."
+                if stats["value"] > 0 else f"No fire hotspots were detected here in {mname} {yr_latest}.")
     where = ""
     if region == WHOLE:
         top = region_rows(latest).iloc[0]
@@ -346,7 +348,7 @@ if stats:
 <div class="ht-summary">
   {pill(level)}<span class="ttl">{area_label} · {I.month_label(latest)}</span>
   <div class="txt"><b>{hs(stats['value'])}</b> (likely range {stats['lo']:,.0f} to {stats['hi']:,.0f}, an approximate 10 to 90% range){ratio_txt}.
-  Rank <b>{stats['rank']} of {stats['n']}</b> {mname}s since {years[0]}, where 1 is the most fires.{seas_txt}{where}
+  {rank_txt}{seas_txt}{where}
   {' Preliminary data.' if stats['nrt'] else ''}</div>
   <div class="ftr">Hotspots are counted on the MODIS scale so every year since 2003 is comparable. Satellite fire
   statistics from NASA FIRMS, not an air-quality reading, forecast, official alert or health advice. For haze and
